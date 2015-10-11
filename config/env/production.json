@@ -1,0 +1,21 @@
+{
+    "db": "mongodb://162.243.116.140/cxc",
+	"port": 3000,
+	"elastic": {
+		"serverOptions" : {
+			"host": "10.128.44.184",
+			"port": 9200,
+			"secure": false
+		},
+		"checkIn": {
+			"index" : "checkins",
+			"type" : "checkin",
+			"geoPointField" : "location",
+			"distance" : 1,
+			"ttl" : "30m"
+		}
+	},
+    "app": {
+        "name": "CXC-API"
+    }
+}

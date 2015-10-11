@@ -1,0 +1,41 @@
+var mongoose = require('mongoose'),
+    Schema = mongoose.Schema;
+
+
+  //////////////////////////////////////////////////////////////////////////////
+ /////////   SCHEMA   /////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
+var ContactNoteSchema = new Schema({
+	contactId : {
+        type: Schema.ObjectId,
+        ref: 'Contact'
+    },
+	text : String,
+	createDate : {
+        type: Date,
+        default: Date.now()
+    }
+});
+
+  //////////////////////////////////////////////////////////////////////////////
+ /////////   STATICS   ////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
+ContactNoteSchema.statics = {
+    loadById: function(id, cb) {
+        this.findOne({
+            _id: id
+        })
+        .exec(cb);
+    },
+    loadByContactId: function(contactId, cb) {
+        this.find({
+            contactId: contactId
+        })
+        .exec(cb);
+    }
+};
+
+
+mongoose.model('ContactNote', ContactNoteSchema);

@@ -1,0 +1,21 @@
+{
+    "db": "mongodb://localhost/cxc-test",
+    "port": 80,
+    "elastic": {
+        "serverOptions" : {
+            "host": "localhost",
+            "port": 9200,
+            "secure": false
+        },
+        "checkIn": {
+            "index" : "checkins",
+            "type" : "checkin",
+            "geoPointField" : "location",
+            "distance" : 1,
+            "ttl" : "30m"
+        }
+    },
+    "app": {
+        "name": "CXC-API-TEST"
+    }
+}
